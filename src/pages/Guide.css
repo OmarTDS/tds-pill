@@ -1,0 +1,289 @@
+/* === Guide Page === */
+
+.guide-page {
+  padding-top: 80px;
+}
+
+.guide-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero */
+.guide-hero {
+  padding: 60px 0 40px;
+}
+
+.guide-back {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  transition: color 0.2s;
+}
+
+.guide-back:hover {
+  color: var(--beige);
+}
+
+.guide-hero-content {
+  text-align: center;
+}
+
+.guide-emoji {
+  display: inline-block;
+  font-size: 2.8rem;
+  margin-bottom: 18px;
+}
+
+.guide-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--white), var(--beige));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.guide-intro-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 14px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Steps */
+.guide-steps {
+  padding: 20px 0 60px;
+}
+
+.step-block {
+  margin-bottom: 16px;
+}
+
+.step-header {
+  margin-bottom: 20px;
+}
+
+.step-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--beige);
+  background: var(--beige-muted);
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.step-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.step-content {
+  margin-bottom: 20px;
+}
+
+.step-para {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.step-callout {
+  background: var(--beige-muted);
+  border-left: 3px solid var(--beige-dark);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+
+.step-callout p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.step-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 16px;
+}
+
+.step-list li {
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.65;
+  padding: 6px 0 6px 20px;
+  position: relative;
+}
+
+.step-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 6px;
+  height: 6px;
+  background: var(--beige-dark);
+  border-radius: 50%;
+}
+
+.step-list li strong {
+  color: var(--text-primary);
+}
+
+/* Subpage Card — the KEY feature the user asked for */
+.subpage-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--black-card);
+  border: 1px solid var(--border-beige);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin: 20px 0 8px;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.subpage-card:hover {
+  background: var(--black-elevated);
+  border-color: var(--beige-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(212,184,150,0.06);
+}
+
+.subpage-emoji {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: var(--beige-muted);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.subpage-card:hover .subpage-emoji {
+  transform: scale(1.08);
+}
+
+.subpage-info {
+  flex: 1;
+}
+
+.subpage-info h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  transition: color 0.2s;
+}
+
+.subpage-card:hover .subpage-info h3 {
+  color: var(--beige);
+}
+
+.subpage-info p {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+.subpage-arrow {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+
+.subpage-card:hover .subpage-arrow {
+  color: var(--beige);
+  transform: translate(2px, -2px);
+}
+
+/* Step Divider */
+.step-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 40px 0;
+}
+
+/* Closing Sections */
+.guide-closing {
+  padding: 20px 0 80px;
+}
+
+.closing-block {
+  margin-bottom: 16px;
+}
+
+.closing-block h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.closing-block p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+.accountability-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.acc-tool-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--black-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  transition: border-color 0.3s;
+}
+
+.acc-tool-card:hover {
+  border-color: var(--border-beige);
+}
+
+.acc-tool-emoji {
+  font-size: 1.4rem;
+}
+
+.acc-tool-card strong {
+  color: var(--text-primary);
+  font-size: 0.92rem;
+}
+
+.acc-tool-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 640px) {
+  .guide-page { padding-top: 64px; }
+  .guide-hero { padding: 40px 0 24px; }
+  .subpage-card { padding: 16px 18px; }
+}
