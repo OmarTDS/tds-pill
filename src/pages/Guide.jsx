@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
+import { getTranslation } from '../data/translations'
 import { guideIntro, notionPages } from '../data/guideContent'
+import { notionPagesAr } from '../data/guideContentAr'
 import NotionRenderer from '../components/NotionRenderer'
 import './Guide.css'
 
@@ -27,7 +30,10 @@ function useFadeIn() {
 
 export default function Guide() {
   const containerRef = useFadeIn()
-  const notionData = notionPages.guide
+  const { lang } = useLanguage()
+
+  // Select language specific blocks
+  const notionData = lang === 'ar' ? notionPagesAr.guide : notionPages.guide
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -36,9 +42,9 @@ export default function Guide() {
   if (!notionData) {
     return (
       <main className="guide-page" style={{ paddingTop: 140, textAlign: 'center' }}>
-        <h2>Guide not found</h2>
+        <h2>{getTranslation(lang, 'pageNotFound')}</h2>
         <Link to="/" style={{ color: 'var(--beige)', marginTop: 16, display: 'inline-block' }}>
-          ← Back to Home
+          {getTranslation(lang, 'returnHome')}
         </Link>
       </main>
     )
@@ -49,10 +55,12 @@ export default function Guide() {
       {/* Header */}
       <section className="guide-hero">
         <div className="guide-container">
-          <Link to="/" className="guide-back fade-in">← Back to Home</Link>
+          <Link to="/" className="guide-back fade-in">{getTranslation(lang, 'backHome')}</Link>
           <div className="guide-hero-content fade-in">
             <span className="guide-emoji">{guideIntro.emoji}</span>
-            <h1 className="guide-title">{guideIntro.title}</h1>
+            <h1 className="guide-title">
+              {lang === 'ar' ? notionPagesAr.guide.title : guideIntro.title}
+            </h1>
           </div>
         </div>
       </section>
