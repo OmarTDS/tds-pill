@@ -62,7 +62,7 @@ export default function Home() {
           </p>
           <div className="hero-actions fade-in">
             <a href="#start" className="btn btn-primary">Start Here <Arrow /></a>
-            <a href="/tds-habit-tracker.svg" download="TDS-Habit-Tracker.svg" className="btn btn-ghost btn-download">Habit Tracker <Download /></a>
+            <a href="/tds-habit-tracker.pdf" download="TDS-Habit-Tracker.pdf" className="btn btn-ghost btn-download">Habit Tracker <Download /></a>
             <Link to="/guide" className="btn btn-ghost">Read the Guide</Link>
           </div>
         </div>
