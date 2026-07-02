@@ -531,3 +531,42 @@
   .hero-actions { flex-direction: column; align-items: center; }
   .btn { width: 100%; justify-content: center; max-width: 260px; }
 }
+
+/* Link wrappers */
+.pillar-card-link, .tool-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pillar-card-link:hover .pillar-card {
+  border-color: var(--border-beige);
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(212,184,150,0.04);
+}
+
+.pillar-card-link:hover .pillar-icon-box {
+  background: rgba(212,184,150,0.15);
+  border-color: rgba(212,184,150,0.25);
+  transform: scale(1.05);
+}
+
+.pillar-card-link:hover .pillar-body h3 {
+  color: var(--beige);
+}
+
+.pillar-card-link:hover .pillar-arrow {
+  color: var(--beige);
+  transform: translate(2px, -2px);
+}
+
+.tool-card-link:hover .tool-card {
+  border-color: var(--border-beige);
+  transform: translateY(-3px);
+  box-shadow: 0 0 40px rgba(212,184,150,0.05);
+}
+
+.tool-card-link:hover .tool-link {
+  color: var(--beige-light);
+}
+

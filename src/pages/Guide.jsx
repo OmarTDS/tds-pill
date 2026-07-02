@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { guideIntro, guideSteps, guideClosing } from '../data/guideContent'
+import { guideIntro, notionPages } from '../data/guideContent'
+import NotionRenderer from '../components/NotionRenderer'
 import './Guide.css'
 
 function useFadeIn() {
@@ -26,10 +27,22 @@ function useFadeIn() {
 
 export default function Guide() {
   const containerRef = useFadeIn()
+  const notionData = notionPages.guide
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  if (!notionData) {
+    return (
+      <main className="guide-page" style={{ paddingTop: 140, textAlign: 'center' }}>
+        <h2>Guide not found</h2>
+        <Link to="/" style={{ color: 'var(--beige)', marginTop: 16, display: 'inline-block' }}>
+          ← Back to Home
+        </Link>
+      </main>
+    )
+  }
 
   return (
     <main className="guide-page" ref={containerRef}>
@@ -40,122 +53,16 @@ export default function Guide() {
           <div className="guide-hero-content fade-in">
             <span className="guide-emoji">{guideIntro.emoji}</span>
             <h1 className="guide-title">{guideIntro.title}</h1>
-            {guideIntro.intro.map((p, i) => (
-              <p key={i} className="guide-intro-text">{p}</p>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* Steps */}
+      {/* Main content from Notion blocks */}
       <section className="guide-steps">
-        <div className="guide-container">
-          {guideSteps.map((step, idx) => (
-            <div key={step.slug} className="step-block fade-in">
-              <div className="step-header">
-                <span className="step-label">{step.step}</span>
-                <h2 className="step-title">{step.title}</h2>
-              </div>
-              <div className="step-content">
-                {step.content.map((block, bi) => (
-                  <ContentBlock key={bi} block={block} />
-                ))}
-              </div>
-              {step.subpage && (
-                <Link to={`/guide/${step.slug}`} className="subpage-card">
-                  <span className="subpage-emoji">{step.subpage.emoji}</span>
-                  <div className="subpage-info">
-                    <h3>{step.subpage.title}</h3>
-                    <p>Deep dive into this step →</p>
-                  </div>
-                  <div className="subpage-arrow">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M7 17L17 7M17 7H7M17 7v10"/>
-                    </svg>
-                  </div>
-                </Link>
-              )}
-              {idx < guideSteps.length - 1 && <div className="step-divider" />}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Compound Effect */}
-      <section className="guide-closing">
-        <div className="guide-container">
-          <div className="closing-block fade-in">
-            <h2>{guideClosing.compoundEffect.title}</h2>
-            {guideClosing.compoundEffect.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
-
-          <div className="step-divider" />
-
-          <div className="closing-block fade-in">
-            <h2>{guideClosing.accountability.title}</h2>
-            <p>{guideClosing.accountability.intro}</p>
-            <div className="accountability-tools">
-              {guideClosing.accountability.tools.map((tool) => (
-                <div key={tool.name} className="acc-tool-card">
-                  <span className="acc-tool-emoji">{tool.emoji}</span>
-                  <div>
-                    <strong>{tool.name}</strong>
-                    <span className="acc-tool-desc"> {tool.desc}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="guide-container fade-in">
+          <NotionRenderer blocks={notionData.blocks} />
         </div>
       </section>
     </main>
-  )
-}
-
-function ContentBlock({ block }) {
-  if (block.type === 'paragraph') {
-    return <p className="step-para">{block.text}</p>
-  }
-
-  if (block.type === 'callout') {
-    return (
-      <div className="step-callout">
-        <FormattedText text={block.text} />
-      </div>
-    )
-  }
-
-  if (block.type === 'list') {
-    return (
-      <ul className="step-list">
-        {block.items.map((item, i) => (
-          <li key={i}>
-            <strong>{item.bold}</strong>{item.text}
-          </li>
-        ))}
-      </ul>
-    )
-  }
-
-  return null
-}
-
-function FormattedText({ text }) {
-  // Simple bold/italic markdown parsing
-  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g)
-  return (
-    <p>
-      {parts.map((part, i) => {
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return <strong key={i}>{part.slice(2, -2)}</strong>
-        }
-        if (part.startsWith('*') && part.endsWith('*')) {
-          return <em key={i}>{part.slice(1, -1)}</em>
-        }
-        return part
-      })}
-    </p>
   )
 }

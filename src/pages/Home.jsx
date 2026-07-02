@@ -24,17 +24,17 @@ function useFadeIn() {
 }
 
 const innerPillars = [
-  { emoji: '🧠', title: 'Mindset', desc: 'Your internal operating system. Beliefs, self-talk, discipline, and mental frameworks that shape every decision you make.' },
-  { emoji: '💪', title: 'Body — Health, Physique & Style', desc: 'Your physical vessel. Health, fitness, grooming, and how you present yourself to the world.' },
+  { emoji: '🧠', title: 'Mindset', desc: 'Your internal operating system. Beliefs, self-talk, discipline, and mental frameworks that shape every decision you make.', slug: 'mindset' },
+  { emoji: '💪', title: 'Body — Health, Physique & Style', desc: 'Your physical vessel. Health, fitness, grooming, and how you present yourself to the world.', slug: 'body' },
 ]
 
 const externalPillars = [
-  { emoji: '💼', title: 'Work Life & Career', desc: 'Your professional path, productivity systems, and how you build value in the world.' },
-  { emoji: '💰', title: 'Money & Financial Freedom', desc: 'Income, savings, investments, and building the financial foundation for independence.' },
-  { emoji: '🤝', title: 'Social Life, Friends & Brotherhood', desc: 'Your circle, networking, and building genuine, high-value relationships.' },
-  { emoji: '❤️', title: 'Relationships', desc: 'Understanding dynamics, building standards, and approaching relationships with clarity.' },
-  { emoji: '🕌', title: 'Religion & Purpose', desc: 'Your relationship with Allah, finding meaning, and aligning your actions with a higher purpose.' },
-  { emoji: '📖', title: 'Islamic Knowledge & Spiritual Development', desc: 'Deepening your understanding of the Deen, building consistent spiritual habits.' },
+  { emoji: '💼', title: 'Work Life & Career', desc: 'Your professional path, productivity systems, and how you build value in the world.', slug: 'work' },
+  { emoji: '💰', title: 'Money & Financial Freedom', desc: 'Income, savings, investments, and building the financial foundation for independence.', slug: 'money' },
+  { emoji: '🤝', title: 'Social Life, Friends & Brotherhood', desc: 'Your circle, networking, and building genuine, high-value relationships.', slug: 'social' },
+  { emoji: '❤️', title: 'Relationships', desc: 'Understanding dynamics, building standards, and approaching relationships with clarity.', slug: 'relationships' },
+  { emoji: '🕌', title: 'Religion & Purpose', desc: 'Your relationship with Allah, finding meaning, and aligning your actions with a higher purpose.', slug: 'religion' },
+  { emoji: '📖', title: 'Islamic Knowledge & Spiritual Development', desc: 'Deepening your understanding of the Deen, building consistent spiritual habits.', slug: 'islamic-knowledge' },
 ]
 
 export default function Home() {
@@ -129,8 +129,8 @@ export default function Home() {
         <div className="container">
           <SectionHeader emoji="🔧" title="Systems & Tools" subtitle="Knowledge without execution is entertainment. These systems keep you on track." />
           <div className="tools-grid fade-in">
-            <ToolCard icon="📅" title="Weekly Review & Accountability System" desc="A structured weekly check-in framework to review progress, course-correct, and maintain momentum." />
-            <ToolCard icon="🔄" title="The Relapse Protocol" desc="You will fall. This protocol exists for exactly that moment — a step-by-step recovery system to get back on track." />
+            <ToolCard icon="📅" title="Weekly Review & Accountability System" desc="A structured weekly check-in framework to review progress, course-correct, and maintain momentum." slug="weekly-review" />
+            <ToolCard icon="🔄" title="The Relapse Protocol" desc="You will fall. This protocol exists for exactly that moment — a step-by-step recovery system to get back on track." slug="relapse-protocol" />
           </div>
         </div>
       </section>
@@ -169,27 +169,31 @@ function CoreCard({ num, title, text }) {
   )
 }
 
-function PillarCard({ emoji, title, desc }) {
+function PillarCard({ emoji, title, desc, slug }) {
   return (
-    <div className="pillar-card">
-      <div className="pillar-icon-box"><span>{emoji}</span></div>
-      <div className="pillar-body">
-        <h3>{title}</h3>
-        <p>{desc}</p>
+    <Link to={`/pillars/${slug}`} className="pillar-card-link">
+      <div className="pillar-card">
+        <div className="pillar-icon-box"><span>{emoji}</span></div>
+        <div className="pillar-body">
+          <h3>{title}</h3>
+          <p>{desc}</p>
+        </div>
+        <div className="pillar-arrow"><Arrow /></div>
       </div>
-      <div className="pillar-arrow"><Arrow /></div>
-    </div>
+    </Link>
   )
 }
 
-function ToolCard({ icon, title, desc }) {
+function ToolCard({ icon, title, desc, slug }) {
   return (
-    <div className="tool-card">
-      <div className="tool-icon">{icon}</div>
-      <h3>{title}</h3>
-      <p>{desc}</p>
-      <span className="tool-link">Open →</span>
-    </div>
+    <Link to={`/tools/${slug}`} className="tool-card-link">
+      <div className="tool-card">
+        <div className="tool-icon">{icon}</div>
+        <h3>{title}</h3>
+        <p>{desc}</p>
+        <span className="tool-link">Open →</span>
+      </div>
+    </Link>
   )
 }
 

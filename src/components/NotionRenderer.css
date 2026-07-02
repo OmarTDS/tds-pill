@@ -1,0 +1,218 @@
+.notion-renderer {
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 0.96rem;
+}
+
+.notion-paragraph {
+  margin-bottom: 16px;
+}
+
+.notion-h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-top: 36px;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.notion-h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-top: 32px;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  padding-left: 12px;
+  border-left: 3px solid var(--beige-dark);
+}
+
+.notion-h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.notion-quote {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--beige-light);
+  border-left: 3px solid var(--beige-dark);
+  padding: 8px 0 8px 18px;
+  margin: 24px 0;
+  background: rgba(212, 184, 150, 0.02);
+}
+
+.notion-callout {
+  display: flex;
+  gap: 16px;
+  background: var(--beige-muted);
+  border-left: 3px solid var(--beige);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 18px 22px;
+  margin: 24px 0;
+  align-items: flex-start;
+}
+
+.notion-callout-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.notion-callout-content {
+  flex: 1;
+  color: var(--white-muted);
+}
+
+.notion-list {
+  margin: 12px 0 20px;
+  padding-left: 20px;
+}
+
+.notion-list-item {
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+.notion-ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.notion-ul .notion-list-item {
+  position: relative;
+  padding-left: 18px;
+}
+
+.notion-ul .notion-list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  background: var(--beige-dark);
+  border-radius: 50%;
+}
+
+.notion-ol {
+  list-style-type: decimal;
+}
+
+.notion-divider {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 32px 0;
+}
+
+.notion-link {
+  color: var(--beige);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--border-beige);
+  transition: all 0.2s ease;
+}
+
+.notion-link:hover {
+  color: var(--beige-light);
+  border-bottom-style: solid;
+  border-bottom-color: var(--beige);
+}
+
+.notion-bold-pillar-link {
+  color: var(--beige);
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: all 0.2s ease;
+}
+
+.notion-bold-pillar-link:hover {
+  color: var(--beige-light);
+  border-bottom-color: var(--beige);
+}
+
+.notion-inline-code {
+  font-family: monospace;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--beige-light);
+  font-size: 0.85em;
+}
+
+/* Child page cards */
+.notion-child-page-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--black-card);
+  border: 1px solid var(--border-beige);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  margin: 20px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.notion-child-page-card:hover {
+  background: var(--black-elevated);
+  border-color: var(--beige-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(212, 184, 150, 0.06);
+}
+
+.notion-child-page-emoji {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  background: var(--beige-muted);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.notion-child-page-card:hover .notion-child-page-emoji {
+  transform: scale(1.08);
+}
+
+.notion-child-page-info {
+  flex: 1;
+}
+
+.notion-child-page-info h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  color: var(--white);
+  transition: color 0.2s;
+}
+
+.notion-child-page-card:hover .notion-child-page-info h3 {
+  color: var(--beige);
+}
+
+.notion-child-page-info p {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+.notion-child-page-arrow {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+
+.notion-child-page-card:hover .notion-child-page-arrow {
+  color: var(--beige);
+  transform: translate(4px, 0);
+}

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { guideSteps, notionPages } from '../data/guideContent';
+import { notionPages } from '../data/guideContent';
 import NotionRenderer from '../components/NotionRenderer';
-import './SubPage.css';
+import './SubPage.css'; // Reuse subpage styling
 
 function useFadeIn() {
   const ref = useRef(null);
@@ -25,24 +25,22 @@ function useFadeIn() {
   return ref;
 }
 
-export default function SubPage() {
+export default function PillarPage() {
   const { slug } = useParams();
   const containerRef = useFadeIn();
   
-  // Find step detail
-  const step = guideSteps.find((s) => s.slug === slug);
   const notionData = notionPages[slug];
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
 
-  if (!step || !notionData) {
+  if (!notionData) {
     return (
       <main className="subpage" style={{ paddingTop: 140, textAlign: 'center' }}>
-        <h2>Page not found</h2>
-        <Link to="/guide" style={{ color: 'var(--beige)', marginTop: 16, display: 'inline-block' }}>
-          ← Back to Guide
+        <h2>Pillar not found</h2>
+        <Link to="/" style={{ color: 'var(--beige)', marginTop: 16, display: 'inline-block' }}>
+          ← Back to Home
         </Link>
       </main>
     );
@@ -51,10 +49,10 @@ export default function SubPage() {
   return (
     <main className="subpage" ref={containerRef}>
       <div className="subpage-container">
-        <Link to="/guide" className="subpage-back fade-in">← Back to Guide</Link>
+        <Link to="/" className="subpage-back fade-in">← Back to Home</Link>
 
         <div className="subpage-header fade-in">
-          <span className="subpage-step-label">{step.step}</span>
+          <span className="subpage-step-label">Pillar</span>
           <div className="subpage-title-row">
             <span className="subpage-title-emoji">{notionData.emoji}</span>
             <h1 className="subpage-title">{notionData.title}</h1>
@@ -66,8 +64,8 @@ export default function SubPage() {
         </div>
 
         <div className="subpage-nav fade-in">
-          <Link to="/guide" className="subpage-nav-link">
-            ← Return to full guide
+          <Link to="/" className="subpage-nav-link">
+            ← Return to Home
           </Link>
         </div>
       </div>
