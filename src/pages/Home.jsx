@@ -62,6 +62,7 @@ export default function Home() {
           </p>
           <div className="hero-actions fade-in">
             <a href="#start" className="btn btn-primary">Start Here <Arrow /></a>
+            <a href="/tds-habit-tracker.svg" download="TDS-Habit-Tracker.svg" className="btn btn-ghost btn-download">Habit Tracker <Download /></a>
             <Link to="/guide" className="btn btn-ghost">Read the Guide</Link>
           </div>
         </div>
@@ -204,3 +205,12 @@ function Arrow() {
     </svg>
   )
 }
+
+function Download() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+    </svg>
+  )
+}
+

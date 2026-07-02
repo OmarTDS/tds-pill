@@ -152,6 +152,18 @@
   transform: translateY(-2px);
 }
 
+.btn-download {
+  border-color: var(--border-beige);
+  color: var(--beige-light);
+}
+
+.btn-download:hover {
+  background: var(--beige-muted);
+  border-color: var(--beige);
+  color: var(--white);
+}
+
+
 /* Scroll Indicator */
 .scroll-indicator {
   position: absolute;
